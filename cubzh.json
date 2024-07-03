@@ -1,0 +1,7 @@
+{
+  "build": "dojo",
+  "worldScript": "world.lua",
+	"contributors": [
+      { "caillef": 1.0 },
+	]
+}
