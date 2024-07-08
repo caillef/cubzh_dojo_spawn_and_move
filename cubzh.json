@@ -1,7 +1,12 @@
 {
-  "build": "dojo",
-  "world_script": "world.lua",
-  "contributors": [
-    { "caillef": 1.0 },
-  ]
+	"script": "world.lua",
+	"env": {
+		"USER_AUTH": "disabled",
+		"CUBZH_MENU": "disabled",
+    "EDITION": "DOJO-1.0.0"
+	},
+	"contributors": [
+		{ "caillef": 1.0 }
+	],
+	"bundle": []
 }
