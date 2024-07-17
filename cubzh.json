@@ -3,10 +3,11 @@
 	"env": {
 		"USER_AUTH": "disabled",
 		"CUBZH_MENU": "disabled",
-    "EDITION": "DOJO-1.0.0"
+    		"EDITION": "DOJO-1.0.0"
 	},
 	"contributors": [
 		{ "caillef": 1.0 }
 	],
-	"bundle": []
+	"bundle": [],
+	"map": "map.b64"
 }
