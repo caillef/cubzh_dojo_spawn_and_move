@@ -1,7 +1,6 @@
 Client.OnStart = function()
-	Camera:SetModeFree()
-	Camera.Position = { 0, 40, -50}
-	Camera.Rotation.X = math.pi * 0.25
+	Player:SetParent(World)
+	Player.Position = Number3(Map.Width * 0.5, Map.Height, Map.Depth * 0.5) * Map.Scale
 end
 
 --[[
