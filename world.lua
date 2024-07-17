@@ -1,3 +1,10 @@
+Client.OnStart = function()
+	Camera:SetModeFree()
+	Camera.Position = { 0, 40, -50}
+	Camera.Rotation.X = math.pi * 0.25
+end
+
+--[[
 local worldInfoRemote = {
 	rpc_url = "https://api.cartridge.gg/x/spawn-and-move-cubzh/katana",
 	torii_url = "https://api.cartridge.gg/x/spawn-and-move-cubzh/torii",
@@ -236,3 +243,5 @@ dojo.actions = {
 		dojo.toriiClient:Execute(dojo.burnerAccount, dojo.config.actions, "set_player_config", { { type = "ByteArray", value = name } })
 	end
 }
+
+--]]
