@@ -7,7 +7,13 @@ Client.OnStart = function()
 	local s
 
 	s = bundle:Shape("wheelbarrow.vox")
+	print("1>", s)
+
+	s = bundle:Shape("assets/burger_classic.vox")
 	print("2>", s)
+
+	s = bundle:Shape("newpath/burger.vox")
+	print("3>", s)
 end
 
 --[[
