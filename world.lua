@@ -14,6 +14,8 @@ Client.OnStart = function()
 
 	s = bundle:Shape("newpath/burger.vox")
 	print("3>", s)
+	Player:EquipHat(s)
+	s.Scale = 5
 end
 
 --[[
