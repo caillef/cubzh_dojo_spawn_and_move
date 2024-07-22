@@ -5,9 +5,6 @@ Client.OnStart = function()
 
 	bundle = require("bundle")
 	local s
-	
-	s = bundle:Shape("wheelbarrow")
-	print("1>", s)
 
 	s = bundle:Shape("wheelbarrow.vox")
 	print("2>", s)
