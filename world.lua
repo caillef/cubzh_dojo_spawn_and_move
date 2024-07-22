@@ -2,6 +2,15 @@ Client.OnStart = function()
 	Player:SetParent(World)
 	Player.Position = Number3(Map.Width * 0.5, Map.Height, Map.Depth * 0.5) * Map.Scale
 	print("Edition: ", Environment.EDITION or "")
+
+	bundle = require("bundle")
+	local s
+	
+	s = bundle:Shape("wheelbarrow")
+	print("1>", s)
+
+	s = bundle:Shape("wheelbarrow.vox")
+	print("2>", s)
 end
 
 --[[
