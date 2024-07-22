@@ -12,7 +12,7 @@
 		"wheelbarrow.vox",
 		"burger_classic.vox",
 		"fail",
-		{ "from" = "assets/burger_classic.vox", "to" = "newpath/burger.vox" }
+		{ "from": "assets/burger_classic.vox", "to": "newpath/burger.vox" }
 	],
 	"map": "map.b64"
 }
