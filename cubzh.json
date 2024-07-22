@@ -11,8 +11,8 @@
 	"bundle": [
 		"wheelbarrow.vox",
 		"burger_classic.vox",
-		"assets/burger_classic.vox",
-		"fail"
+		"fail",
+		{ from = "assets/burger_classic.vox", to = "newpath/burger.vox" }
 	],
 	"map": "map.b64"
 }
