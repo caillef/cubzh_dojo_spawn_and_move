@@ -3,7 +3,7 @@
 	"env": {
 		"USER_AUTH": "disabled",
 		"CUBZH_MENU": "disabled",
-    		"EDITION": "DOJO-1.0.0"
+    		"EDITION": "0.0.67"
 	},
 	"contributors": [
 		{ "caillef": 1.0 }
