@@ -42,10 +42,12 @@ getOrCreatePlayerEntity = function(data)
 	local entity = entities[data.Key]
 	if not entity then
 		local ui = require("uikit")
-		local avatar = require("avatar"):get("caillef")
+		local avatar = MutableShape() -- require("avatar"):get("caillef")
+		avatar.Pivot = { 0.5, 0, 0.5 }
+		avatar:AddBlock(Color.Red,0,0,0)
 		avatar:SetParent(World)
 		avatar.Position = { 0.5 * map.Scale.X, 0, 0.5 * map.Scale.Z }
-		avatar.Scale = 0.2
+		avatar.Scale = 2 -- 0.2
 		avatar.Rotation.Y = math.pi
 		avatar.Physics = PhysicsMode.Disabled
 
