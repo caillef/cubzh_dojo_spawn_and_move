@@ -3,16 +3,10 @@
 	"env": {
 		"USER_AUTH": "disabled",
 		"CUBZH_MENU": "disabled",
-    		"EDITION": "0.0.67"
+    		"EDITION": "dojo-1.0.0"
 	},
 	"contributors": [
 		{ "caillef": 1.0 }
-	],
-	"bundle": [
-		"wheelbarrow.vox",
-		"burger_classic.vox",
-		"fail",
-		{ "from": "assets/burger_classic.vox", "to": "newpath/burger.vox" }
 	],
 	"map": "map.b64"
 }
