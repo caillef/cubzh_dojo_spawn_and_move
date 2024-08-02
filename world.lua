@@ -167,6 +167,7 @@ Client.OnStart = function()
 
 	-- create Torii client
 	worldInfo.onConnect = startGame
+	print("OnStart call createToriiClient")
 	dojo:createToriiClient(worldInfo)
  end
 
@@ -203,6 +204,7 @@ dojo.createToriiClient = function(self, config)
 	dojo.config = config
 	local err
 	dojo.toriiClient, err = Dojo:CreateToriiClient(config.torii_url, config.rpc_url, config.world)
+	print("called createToriiClient", dojo.toriiClient, err)
 	if dojo.toriiClient == nil then
 		local connectionHandler
 		print(err)
