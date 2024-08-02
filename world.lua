@@ -20,7 +20,7 @@ Client.OnStart = function()
 end
 --]]
 
-local worldInfoRemote = {
+local worldInfo = {
 	rpc_url = "https://api.cartridge.gg/x/spawn-and-move-cubzh/katana",
 	torii_url = "https://api.cartridge.gg/x/spawn-and-move-cubzh/torii",
 	world = "0x7efebb0c2d4cc285d48a97a7174def3be7fdd6b7bd29cca758fa2e17e03ef30",
