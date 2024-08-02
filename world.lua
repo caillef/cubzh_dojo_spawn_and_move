@@ -1,3 +1,4 @@
+--[[
 Client.OnStart = function()
 	Player:SetParent(World)
 	Player.Position = Number3(Map.Width * 0.5, Map.Height, Map.Depth * 0.5) * Map.Scale
@@ -17,8 +18,8 @@ Client.OnStart = function()
 	Player:EquipHat(s)
 	s.Scale = 5
 end
+--]]
 
---[[
 local worldInfoRemote = {
 	rpc_url = "https://api.cartridge.gg/x/spawn-and-move-cubzh/katana",
 	torii_url = "https://api.cartridge.gg/x/spawn-and-move-cubzh/torii",
