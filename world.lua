@@ -203,33 +203,16 @@ end
 dojo.createToriiClient = function(self, config)
 	dojo.config = config
 	local err
-	dojo.toriiClient, err = Dojo:CreateToriiClient(config.torii_url, config.rpc_url, config.world)
-	print("called createToriiClient", dojo.toriiClient, err)
-	if dojo.toriiClient == nil then
-		local connectionHandler
-		print(err)
-		print("Dojo: can't connect to torii, retrying in a few seconds...")
-			--[[
-		connectionHandler = Timer(3, true, function()
-			dojo.toriiClient, err = Dojo:CreateToriiClient(config.torii_url, config.rpc_url, config.world)
-			if dojo.toriiClient == nil then
-				print(err)
-				print("Dojo: can't connect to torii, retrying in a few seconds...")
-				return
-			end
-			connectionHandler:Cancel()
-			self:getOrCreateBurner(config)
-			if config.onConnect then
-				config.onConnect(self.toriiClient)
-			end
-		end)
-			--]]
-		return
+	dojo.toriiClient = Dojo:CreateToriiClient(config.torii_url, config.rpc_url, config.world)
+	dojo.toriiClient.OnConnect = function()
+		print("CONNECT")
+		self:getOrCreateBurner(config)
+		config.onConnect()
 	end
-	self:getOrCreateBurner(config)
-	if config.onConnect then
-		config.onConnect(self.toriiClient)
+	dojo.toriiClient.OnConnectFail = function()
+		print("FAILED")
 	end
+	dojo.toriiClient:Connect()
 end
 
 dojo.getModel = function(_, entity, modelName)
