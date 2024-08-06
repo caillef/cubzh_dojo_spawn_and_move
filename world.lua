@@ -209,6 +209,7 @@ dojo.createToriiClient = function(self, config)
 		local connectionHandler
 		print(err)
 		print("Dojo: can't connect to torii, retrying in a few seconds...")
+			--[[
 		connectionHandler = Timer(3, true, function()
 			dojo.toriiClient, err = Dojo:CreateToriiClient(config.torii_url, config.rpc_url, config.world)
 			if dojo.toriiClient == nil then
@@ -222,6 +223,7 @@ dojo.createToriiClient = function(self, config)
 				config.onConnect(self.toriiClient)
 			end
 		end)
+			--]]
 		return
 	end
 	self:getOrCreateBurner(config)
