@@ -207,7 +207,7 @@ dojo.createToriiClient = function(self, config)
 	dojo.toriiClient.OnConnect = function()
 		print("CONNECT")
 		self:getOrCreateBurner(config)
-		config.onConnect()
+		config.onConnect(dojo.toriiClient)
 	end
 	dojo.toriiClient.OnConnectFail = function()
 		print("FAILED")
