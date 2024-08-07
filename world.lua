@@ -22,8 +22,8 @@ end
 
 local worldInfo = {
 	rpc_url = "https://api.cartridge.gg/x/spawn-and-move-cubzh/katana",
-	--torii_url = "https://api.cartridge.gg/x/spawn-and-move-cubzh/torii",
-	torii_url = "http://localhost:8080",
+	torii_url = "https://api.cartridge.gg/x/spawn-and-move-cubzh/torii",
+	--torii_url = "http://localhost:8080",
 	world = "0x25e74888e786245ec7aa93d846b2cc9e4b49a5244209860bbf4b384f654521b",
 	actions = "0x24d926d75cd84104c3bd24f0f79e95c273d6a99ed449f3c8b83114857020332",
 	playerAddress = "0x657e5f424dc6dee0c5a305361ea21e93781fea133d83efa410b771b7f92b",
