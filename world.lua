@@ -39,7 +39,7 @@ local Direction = {
 
 local entities = {}
 getOrCreatePlayerEntity = function(data)
-	if not dojo:getModel(data, "Position") then return end
+	if not dojo:getModel(data, "dojo_examples-Position") then return end
 	local entity = entities[data.Key]
 	if not entity then
 		local ui = require("uikit")
@@ -72,31 +72,31 @@ getOrCreatePlayerEntity = function(data)
 	entity.update = function(self, newEntity)
 		local avatar = self.avatar
 
-		local moves = dojo:getModel(newEntity, "Moves")
+		local moves = dojo:getModel(newEntity, "dojo_examples-Moves")
 		if moves then
-			if moves.last_direction.Option == Direction.Left then avatar.Rotation.Y = math.pi * -0.5 end
-			if moves.last_direction.Option == Direction.Right then avatar.Rotation.Y = math.pi * 0.5 end
-			if moves.last_direction.Option == Direction.Up then avatar.Rotation.Y = 0 end
-			if moves.last_direction.Option == Direction.Down then avatar.Rotation.Y = math.pi end
+			if moves.last_direction.value.option == Direction.Left then avatar.Rotation.Y = math.pi * -0.5 end
+			if moves.last_direction.value.option == Direction.Right then avatar.Rotation.Y = math.pi * 0.5 end
+			if moves.last_direction.value.option == Direction.Up then avatar.Rotation.Y = 0 end
+			if moves.last_direction.value.option == Direction.Down then avatar.Rotation.Y = math.pi end
 
-			local isLocalPlayer = myAddress == contractAddressToBase64(moves.player)
+			local isLocalPlayer = myAddress == contractAddressToBase64(moves.player.value)
 			if remainingMoves and isLocalPlayer then
-				remainingMoves.Text = string.format("Remaining moves: %d", moves.remaining)
+				remainingMoves.Text = string.format("Remaining moves: %d", moves.remaining.value)
 			end
 		end
 
-		local position = dojo:getModel(newEntity, "Position")
+		local position = dojo:getModel(newEntity, "dojo_examples-Position")
 		if position then
 			avatar.Position = {
-				((position.vec.x - self.originalPos.x) + 0.5) * map.Scale.X,
+				((position.vec.value.x.value - self.originalPos.x) + 0.5) * map.Scale.X,
 				0,
-				(-(position.vec.y - self.originalPos.y) + 0.5) * map.Scale.Z
+				(-(position.vec.value.y.value - self.originalPos.y) + 0.5) * map.Scale.Z
 			}
 		end
-
-		local playerConfig = dojo:getModel(newEntity, "PlayerConfig")
+--[[
+		local playerConfig = dojo:getModel(newEntity, "dojo_examples-PlayerConfig")
 		if playerConfig then
-			avatar.nameHandle.Text = playerConfig.name:ToString()
+			avatar.nameHandle.Text = playerConfig.name.value:ToString()
 			local isLocalPlayer = myAddress == contractAddressToBase64(playerConfig.player)
 			if isLocalPlayer then
 				avatar.nameHandle.BackgroundColor = Color.Red
@@ -104,7 +104,7 @@ getOrCreatePlayerEntity = function(data)
 			end
 		end
 		avatar.nameHandle.Backward = Camera.Backward
-
+--]]
 		self.data = newEntity
 	end
 
@@ -117,19 +117,11 @@ end
 
 function startGame(toriiClient)
 	-- sync existing entities
-	toriiClient:Entities(function(entities)
-		for key,models in pairs(entities) do
-			for modelName, content in pairs(models) do
-				print(">", key, modelName, JSON:Encode(content))
-			end
-		end
-			--[[
-		print("Existing entities synced:", #entities)
-		for _,newEntity in ipairs(entities) do
+	toriiClient:Entities(function(entities)	
+		for key,newEntity in pairs(entities) do
 			local entity = getOrCreatePlayerEntity(newEntity)
 			if entity then entity:update(newEntity) end
 		end
-			--]]
 	end)
 
 	-- sync existing entities
@@ -234,8 +226,8 @@ dojo.createToriiClient = function(self, config)
 end
 
 dojo.getModel = function(_, entity, modelName)
-	for _,model in ipairs(entity.Models) do
-		if model.Name == modelName then
+	for key,model in pairs(entity) do
+		if key == modelName then
 			return model
 		end
 	end
