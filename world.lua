@@ -38,7 +38,7 @@ local Direction = {
 }
 
 local entities = {}
-getOrCreatePlayerEntity = function(data)
+getOrCreatePlayerEntity = function(key, data)
 	if not dojo:getModel(data, "dojo_examples-Position") then return end
 	local entity = entities[data.Key]
 	if not entity then
@@ -65,7 +65,7 @@ getOrCreatePlayerEntity = function(data)
 			originalPos = { x = 10, y = 10 },
 			avatar = avatar
 		}
-		entities[data.Key] = entity
+		entities[key] = entity
 	end
 
 	myAddress = contractAddressToBase64(dojo.burnerAccount.Address)
@@ -119,24 +119,15 @@ function startGame(toriiClient)
 	-- sync existing entities
 	toriiClient:Entities(function(entities)	
 		for key,newEntity in pairs(entities) do
-			local entity = getOrCreatePlayerEntity(newEntity)
+			local entity = getOrCreatePlayerEntity(key, newEntity)
 			if entity then entity:update(newEntity) end
 		end
-	end)
-
-	-- sync existing entities
-	toriiClient:EventMessages(function(events)
-		print("received some events")	
 	end)
 	
 	-- set on entity update callback
 	toriiClient:OnEntityUpdate(function(newEntity)
-		local entity = getOrCreatePlayerEntity(newEntity)
+		local entity = getOrCreatePlayerEntity(key, newEntity)
 		if entity then entity:update(newEntity) end
-	end)
-
-	toriiClient:OnEventMessageUpdate(function(newEvent)
-		--print("Event received", newEvent.Models[1].Name)
 	end)
 
 	-- call spawn method
