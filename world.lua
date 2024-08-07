@@ -140,7 +140,7 @@ function startGame(toriiClient)
 
 	-- call spawn method
 	dojo.actions.spawn()
-	dojo.actions.set_player_config("focg lover")
+	--dojo.actions.set_player_config("focg lover")
 
 	-- init ui
 	ui = require("uikit")
@@ -183,6 +183,7 @@ end
 
 Client.DirectionalPad = function(dx, dy)
 	if dx == -1 then
+		print("move left")
 		dojo.actions.move(Direction.Left)
 	elseif dx == 1 then
 		dojo.actions.move(Direction.Right)
