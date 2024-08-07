@@ -122,6 +122,7 @@ function startGame(toriiClient)
 	
 	-- set on entity update callback
 	toriiClient:OnEntityUpdate(function(entities)
+		print("6 lua callback")
 		for key,newEntity in pairs(entities) do
 			local entity = getOrCreatePlayerEntity(key, newEntity)
 			if entity then entity:update(newEntity) end
