@@ -69,6 +69,7 @@ getOrCreatePlayerEntity = function(key, data)
 	end
 
 	myAddress = dojo.burnerAccount.Address
+	print("my address", myAddress)
 	entity.update = function(self, newEntity)
 		local avatar = self.avatar
 
