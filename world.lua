@@ -118,7 +118,11 @@ end
 function startGame(toriiClient)
 	-- sync existing entities
 	toriiClient:Entities(function(entities)
-		print("LUA> callback", entities)
+		for key,models in pairs(entities) do
+			for modelName, content in pairs(models) do
+				print(">", key, modelName, JSON:Encode(content))
+			end
+		end
 			--[[
 		print("Existing entities synced:", #entities)
 		for _,newEntity in ipairs(entities) do
