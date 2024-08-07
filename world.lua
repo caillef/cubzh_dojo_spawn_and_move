@@ -40,7 +40,7 @@ local Direction = {
 local entities = {}
 getOrCreatePlayerEntity = function(key, data)
 	if not dojo:getModel(data, "dojo_examples-Position") then return end
-	local entity = entities[data.Key]
+	local entity = entities[key]
 	if not entity then
 		local ui = require("uikit")
 		local avatar = MutableShape() -- require("avatar"):get("caillef")
@@ -74,10 +74,10 @@ getOrCreatePlayerEntity = function(key, data)
 
 		local moves = dojo:getModel(newEntity, "dojo_examples-Moves")
 		if moves then
-			if moves.last_direction.value.option == Direction.Left then avatar.Rotation.Y = math.pi * -0.5 end
-			if moves.last_direction.value.option == Direction.Right then avatar.Rotation.Y = math.pi * 0.5 end
-			if moves.last_direction.value.option == Direction.Up then avatar.Rotation.Y = 0 end
-			if moves.last_direction.value.option == Direction.Down then avatar.Rotation.Y = math.pi end
+			if moves.last_direction.value.option == "Left" then avatar.Rotation.Y = math.pi * -0.5 end
+			if moves.last_direction.value.option == "Right" then avatar.Rotation.Y = math.pi * 0.5 end
+			if moves.last_direction.value.option == "Up" then avatar.Rotation.Y = 0 end
+			if moves.last_direction.value.option == "Down" then avatar.Rotation.Y = math.pi end
 
 			local isLocalPlayer = myAddress == moves.player.value
 			if remainingMoves and isLocalPlayer then
