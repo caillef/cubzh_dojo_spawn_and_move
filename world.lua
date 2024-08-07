@@ -125,9 +125,10 @@ function startGame(toriiClient)
 	end)
 
 	-- sync existing entities
-	local events = toriiClient:EventMessages()
-	print("Existing event synced:", #events)
-
+	toriiClient:EventMessages(function(events)
+		print("received some events")	
+	end)
+	
 	-- set on entity update callback
 	toriiClient:OnEntityUpdate(function(newEntity)
 		local entity = getOrCreatePlayerEntity(newEntity)
