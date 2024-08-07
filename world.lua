@@ -68,7 +68,7 @@ getOrCreatePlayerEntity = function(key, data)
 		entities[key] = entity
 	end
 
-	myAddress = contractAddressToBase64(dojo.burnerAccount.Address)
+	myAddress = dojo.burnerAccount.Address
 	entity.update = function(self, newEntity)
 		local avatar = self.avatar
 
@@ -79,7 +79,7 @@ getOrCreatePlayerEntity = function(key, data)
 			if moves.last_direction.value.option == Direction.Up then avatar.Rotation.Y = 0 end
 			if moves.last_direction.value.option == Direction.Down then avatar.Rotation.Y = math.pi end
 
-			local isLocalPlayer = myAddress == contractAddressToBase64(moves.player.value)
+			local isLocalPlayer = myAddress == moves.player.value
 			if remainingMoves and isLocalPlayer then
 				remainingMoves.Text = string.format("Remaining moves: %d", moves.remaining.value)
 			end
@@ -97,7 +97,7 @@ getOrCreatePlayerEntity = function(key, data)
 		local playerConfig = dojo:getModel(newEntity, "dojo_examples-PlayerConfig")
 		if playerConfig then
 			avatar.nameHandle.Text = playerConfig.name.value:ToString()
-			local isLocalPlayer = myAddress == contractAddressToBase64(playerConfig.player)
+			local isLocalPlayer = myAddress == playerConfig.player.value
 			if isLocalPlayer then
 				avatar.nameHandle.BackgroundColor = Color.Red
 				avatar.nameHandle.Color = Color.White
@@ -109,10 +109,6 @@ getOrCreatePlayerEntity = function(key, data)
 	end
 
 	return entity
-end
-
-contractAddressToBase64 = function(contractAddress)
-	return contractAddress.Data:ToString({ format = "base64" })
 end
 
 function startGame(toriiClient)
