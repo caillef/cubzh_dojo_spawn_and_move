@@ -117,12 +117,16 @@ end
 
 function startGame(toriiClient)
 	-- sync existing entities
-	local entities = toriiClient:Entities()
-	print("Existing entities synced:", #entities)
-	for _,newEntity in ipairs(entities) do
-		local entity = getOrCreatePlayerEntity(newEntity)
-		if entity then entity:update(newEntity) end
-	end
+	toriiClient:Entities(function(entities)
+		print("LUA> callback", entities)
+			--[[
+		print("Existing entities synced:", #entities)
+		for _,newEntity in ipairs(entities) do
+			local entity = getOrCreatePlayerEntity(newEntity)
+			if entity then entity:update(newEntity) end
+		end
+			--]]
+	end)
 
 	-- sync existing entities
 	local events = toriiClient:EventMessages()
