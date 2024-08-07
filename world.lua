@@ -139,10 +139,7 @@ function startGame(toriiClient)
 	end)
 
 	-- call spawn method
-	Timer(3, function()
-		print("lua call spawn")
-		dojo.actions.spawn()
-	end)
+	dojo.actions.spawn()
 	--dojo.actions.set_player_config("focg lover")
 
 	-- init ui
