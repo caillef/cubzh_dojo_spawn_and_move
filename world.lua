@@ -209,7 +209,10 @@ dojo.createToriiClient = function(self, config)
 	local err
 	dojo.toriiClient = Dojo:CreateToriiClient(config.torii_url, config.rpc_url, config.world)
 	dojo.toriiClient.OnConnect = function(success)
-		print("CONNECTION SUCCESS", success)
+		if not success then
+			print("Connection failed")
+			return
+		end
 		self:getOrCreateBurner(config, function()
 			config.onConnect(dojo.toriiClient)
 		end)
