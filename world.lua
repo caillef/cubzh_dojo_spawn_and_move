@@ -121,9 +121,11 @@ function startGame(toriiClient)
 	end)
 	
 	-- set on entity update callback
-	toriiClient:OnEntityUpdate(function(newEntity)
-		local entity = getOrCreatePlayerEntity(key, newEntity)
-		if entity then entity:update(newEntity) end
+	toriiClient:OnEntityUpdate(function(entities)
+		for key,newEntity in pairs(entities) do
+			local entity = getOrCreatePlayerEntity(key, newEntity)
+			if entity then entity:update(newEntity) end
+		end
 	end)
 
 	-- call spawn method
