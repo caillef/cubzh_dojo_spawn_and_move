@@ -196,21 +196,23 @@ end
 
 dojo = {}
 
-dojo.getOrCreateBurner = function(self, config)
-	dojo.burnerAccount = self.toriiClient:CreateBurner(config.playerAddress, config.playerSigningKey)
+dojo.getOrCreateBurner = function(self, config, cb)
+	self.toriiClient:CreateBurner(config.playerAddress, config.playerSigningKey, function(success, burnerAccount)
+		print("success burner account", success)
+		dojo.burnerAccount = burnerAccount
+		cb()
+	end)
 end
 
 dojo.createToriiClient = function(self, config)
 	dojo.config = config
 	local err
 	dojo.toriiClient = Dojo:CreateToriiClient(config.torii_url, config.rpc_url, config.world)
-	dojo.toriiClient.OnConnect = function()
-		print("CONNECT")
-		self:getOrCreateBurner(config)
-		config.onConnect(dojo.toriiClient)
-	end
-	dojo.toriiClient.OnConnectFail = function()
-		print("FAILED")
+	dojo.toriiClient.OnConnect = function(success)
+		print("CONNECTION SUCCESS", success)
+		self:getOrCreateBurner(config, function()
+			config.onConnect(dojo.toriiClient)
+		end)
 	end
 	dojo.toriiClient:Connect()
 end
