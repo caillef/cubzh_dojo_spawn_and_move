@@ -252,7 +252,7 @@ dojo.actions = {
 	end,
 	move = function(dir)
 		if not dojo.toriiClient then return end
-		dojo.toriiClient:Execute(dojo.burnerAccount, dojo.config.actions, "move", string.format("[\"%s"]", number_to_hexstr(dir)))
+		dojo.toriiClient:Execute(dojo.burnerAccount, dojo.config.actions, "move", string.format("[\"%s\"]", number_to_hexstr(dir)))
 	end,
 	set_player_config = function(name)
 		if not dojo.toriiClient then return end
