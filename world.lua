@@ -123,7 +123,7 @@ function startGame(toriiClient)
 	
 	-- set on entity update callback
 	-- match everything
-	local clauseJsonStr = "[{ Keys: { keys: [], models: [], pattern_matching: \"VariableLen\" } }]"
+	local clauseJsonStr = "[{ \"Keys\": { \"keys\": [], \"models\": [], \"pattern_matching\": \"VariableLen\" } }]"
 	toriiClient:OnEntityUpdate(clauseJsonStr, function(entities)
 		for key,newEntity in pairs(entities) do
 			local entity = getOrCreatePlayerEntity(key, newEntity)
