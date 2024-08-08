@@ -231,12 +231,16 @@ function bytes_to_hex(data)
 	return hex
 end
 
-function string_to_bytearray(str)
+function string_to_bytearraystr(str)
 	local hex = "0x"
 	for i=1, #str do
         	hex = hex .. string.format("%02x", string.sub(str,i,i))
 	end
 	return hex
+end
+
+function number_to_hexstr(number)
+	return "0x"..string.format("%x", number)
 end
 
 -- generated contracts
@@ -248,11 +252,11 @@ dojo.actions = {
 	end,
 	move = function(dir)
 		if not dojo.toriiClient then return end
-		dojo.toriiClient:Execute(dojo.burnerAccount, dojo.config.actions, "move", string.format("[\"0x0%d\"]", dir))
+		dojo.toriiClient:Execute(dojo.burnerAccount, dojo.config.actions, "move", string.format("[\"%s"]", number_to_hexstr(dir)))
 	end,
 	set_player_config = function(name)
 		if not dojo.toriiClient then return end
-		dojo.toriiClient:Execute(dojo.burnerAccount, dojo.config.actions, "set_player_config", string.format("[\"%s\"]", string_to_bytearray(name)))
+		dojo.toriiClient:Execute(dojo.burnerAccount, dojo.config.actions, "set_player_config", string.format("[\"%s\"]", string_to_bytearraystr(name)))
 	end
 }
 
