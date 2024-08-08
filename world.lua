@@ -240,11 +240,11 @@ dojo.actions = {
 	end,
 	move = function(dir)
 		if not dojo.toriiClient then return end
-		dojo.toriiClient:Execute(dojo.burnerAccount, dojo.config.actions, "move", { dir })
+		dojo.toriiClient:Execute(dojo.burnerAccount, dojo.config.actions, "move", "0x"..tostring(dir))
 	end,
 	set_player_config = function(name)
 		if not dojo.toriiClient then return end
-		dojo.toriiClient:Execute(dojo.burnerAccount, dojo.config.actions, "set_player_config", { { type = "ByteArray", value = name } })
+		--dojo.toriiClient:Execute(dojo.burnerAccount, dojo.config.actions, "set_player_config", { { type = "ByteArray", value = name } })
 	end
 }
 
