@@ -69,7 +69,6 @@ getOrCreatePlayerEntity = function(key, data)
 	end
 
 	myAddress = dojo.burnerAccount.Address
-	print("my address", myAddress)
 	entity.update = function(self, newEntity)
 		local avatar = self.avatar
 
@@ -94,7 +93,7 @@ getOrCreatePlayerEntity = function(key, data)
 				(-(position.vec.value.y.value - self.originalPos.y) + 0.5) * map.Scale.Z
 			}
 		end
---[[
+
 		local playerConfig = dojo:getModel(newEntity, "dojo_examples-PlayerConfig")
 		if playerConfig then
 			avatar.nameHandle.Text = playerConfig.name.value:ToString()
@@ -105,7 +104,7 @@ getOrCreatePlayerEntity = function(key, data)
 			end
 		end
 		avatar.nameHandle.Backward = Camera.Backward
---]]
+
 		self.data = newEntity
 	end
 
@@ -164,7 +163,6 @@ Client.OnStart = function()
 
 	-- create Torii client
 	worldInfo.onConnect = startGame
-	print("OnStart call createToriiClient")
 	dojo:createToriiClient(worldInfo)
  end
 
@@ -179,7 +177,6 @@ end
 
 Client.DirectionalPad = function(dx, dy)
 	if dx == -1 then
-		print("move left")
 		dojo.actions.move(Direction.Left)
 	elseif dx == 1 then
 		dojo.actions.move(Direction.Right)
