@@ -1,7 +1,7 @@
 {
 	"script": "world.lua",
 	"env": {
-		"USER_AUTH": "enabled",
+		"USER_AUTH": "disabled",
 		"CUBZH_MENU": "disabled",
     	"EDITION": "dojo-1.0.0.alpha4"
 	},
