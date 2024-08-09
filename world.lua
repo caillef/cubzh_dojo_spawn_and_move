@@ -147,6 +147,7 @@ function startGame(toriiClient)
 end
 
 Client.OnStart = function()
+	print("LUAAAA ENVIRONMENT", Environment.USER_AUTH)
 	map = MutableShape()
 	for z=-10,10 do
 		for x=-10,10 do
