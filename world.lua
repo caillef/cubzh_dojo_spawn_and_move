@@ -141,7 +141,7 @@ function startGame(toriiClient)
 	ui = require("uikit")
 	remainingMoves = ui:createText("Remaining moves: 50", Color.White, "big")
 	remainingMoves.parentDidResize = function()
-		remainingMoves.pos = { Screen.Width - remainingMoves.Width - 5, Screen.Height - remainingMoves.Height - 50 - Screen.SafeArea.Top }
+		remainingMoves.pos = { Screen.Width - remainingMoves.Width - 5, Screen.Height - remainingMoves.Height - Screen.SafeArea.Top }
 	end
 	remainingMoves:parentDidResize()
 end
