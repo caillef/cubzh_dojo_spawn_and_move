@@ -133,7 +133,7 @@ function startGame(toriiClient)
 
 	-- call spawn method
 	dojo.actions.spawn()
-	--dojo.actions.set_player_config("focg lover")
+	dojo.actions.set_player_config("focg lover")
 
 	-- init ui
 	ui = require("uikit")
