@@ -7,6 +7,13 @@ local worldInfo = {
 	playerSigningKey = "0xcd93de85d43988b9492bfaaff930c129fc3edbc513bb0c2b81577291848007",
 }
 
+local Direction = {
+	Left = 1,
+	Right = 2,
+	Up = 3,
+	Down = 4,
+}
+
 local avatarNames = { "caillef", "aduermael", "gdevillele", "claire", "soliton", "buche", "voxels", "petroglyph" }
 
 local entities = {}
