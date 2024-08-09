@@ -177,6 +177,7 @@ function startGame(toriiClient)
 		nameInput.parentDidResize = function()
 			nameInput.pos = { 10, 10 }
 		end
+		nameInput:parentDidResize()
 		nameInput.onFocus = function()
 			nameInput.Text = ""
 		end
