@@ -1,41 +1,13 @@
---[[
-Client.OnStart = function()
-	Player:SetParent(World)
-	Player.Position = Number3(Map.Width * 0.5, Map.Height, Map.Depth * 0.5) * Map.Scale
-	print("Edition: ", Environment.EDITION or "")
-
-	bundle = require("bundle")
-	local s
-
-	s = bundle:Shape("wheelbarrow.vox")
-	print("1>", s)
-
-	s = bundle:Shape("assets/burger_classic.vox")
-	print("2>", s)
-
-	s = bundle:Shape("newpath/burger.vox")
-	print("3>", s)
-	Player:EquipHat(s)
-	s.Scale = 5
-end
---]]
-
 local worldInfo = {
 	rpc_url = "https://api.cartridge.gg/x/spawn-and-move-cubzh/katana",
 	torii_url = "https://api.cartridge.gg/x/spawn-and-move-cubzh/torii",
-	--torii_url = "http://localhost:8080",
 	world = "0x25e74888e786245ec7aa93d846b2cc9e4b49a5244209860bbf4b384f654521b",
 	actions = "0x24d926d75cd84104c3bd24f0f79e95c273d6a99ed449f3c8b83114857020332",
 	playerAddress = "0x657e5f424dc6dee0c5a305361ea21e93781fea133d83efa410b771b7f92b",
 	playerSigningKey = "0xcd93de85d43988b9492bfaaff930c129fc3edbc513bb0c2b81577291848007",
 }
 
-local Direction = {
-	Left = 1,
-	Right = 2,
-	Up = 3,
-	Down = 4,
-}
+local avatarNames = { "caillef", "aduermael", "gdevillele", "claire", "soliton", "buche", "voxels", "petroglyph" }
 
 local entities = {}
 getOrCreatePlayerEntity = function(key, data)
@@ -43,19 +15,21 @@ getOrCreatePlayerEntity = function(key, data)
 	local entity = entities[key]
 	if not entity then
 		local ui = require("uikit")
-		local avatar = MutableShape() -- require("avatar"):get("caillef")
+		local avatar = require("avatar"):get(avatarNames[math.random(1,#avatarNames)])
+		--local avatar = MutableShape()
 		avatar.Pivot = { 0.5, 0, 0.5 }
 		avatar:AddBlock(Color.Red,0,0,0)
 		avatar:SetParent(World)
 		avatar.Position = { 0.5 * map.Scale.X, 0, 0.5 * map.Scale.Z }
-		avatar.Scale = 2 -- 0.2
+		--avatar.Scale = 2
+		avatar.Scale = 0.2
 		avatar.Rotation.Y = math.pi
 		avatar.Physics = PhysicsMode.Disabled
 
 		local handle = Text()
 		handle:SetParent(avatar)
-		handle.FontSize = 1
-		handle.LocalPosition = { 0, 4, 0 }
+		handle.FontSize = avatar.Scale.X * 5
+		handle.LocalPosition = { 0, 4 * handle.FontSize, 0 }
 		avatar.nameHandle = handle
 		handle.Backward = Camera.Backward
 
