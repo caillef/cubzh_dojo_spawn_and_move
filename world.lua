@@ -35,7 +35,7 @@ getOrCreatePlayerEntity = function(key, data)
 
 		local handle = Text()
 		handle:SetParent(avatar)
-		handle.FontSize = avatar.Scale.X * 5
+		handle.FontSize = 2 / avatar.Scale.X
 		handle.LocalPosition = { 0, 4 * handle.FontSize, 0 }
 		avatar.nameHandle = handle
 		handle.Backward = Camera.Backward
@@ -116,10 +116,8 @@ function startGame(toriiClient)
 
 	-- call spawn method
 	dojo.actions.spawn()
-	Timer(3, function()
-		dojo.actions.set_player_config("focg lover")
-	end)
-
+	dojo.actions.set_player_config("focg lover")
+	
 	-- init ui
 	ui = require("uikit")
 	remainingMoves = ui:createText("Remaining moves: 50", Color.White, "big")
