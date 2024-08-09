@@ -239,12 +239,12 @@ function string_to_bytearraystr(str)
 		if char == '0' or char == '1' or char == '2' or char == '3' or char == '4' or
 			char == '5' or char == '6' or char == '7' or char == '8' or char == '9' then
 			numberValue = tonumber(char)
-		else if char == 'a' then numberValue = 10 
-		else if char == 'b' then numberValue = 11 
-		else if char == 'c' then numberValue = 12 
-		else if char == 'd' then numberValue = 13 
-		else if char == 'e' then numberValue = 14 
-		else if char == 'f' then numberValue = 15
+		elseif char == 'a' then numberValue = 10 
+		elseif char == 'b' then numberValue = 11 
+		elseif char == 'c' then numberValue = 12 
+		elseif char == 'd' then numberValue = 13 
+		elseif char == 'e' then numberValue = 14 
+		elseif char == 'f' then numberValue = 15
 		end
         	hex = hex .. string.format("%02x", numberValue)
 	end
