@@ -129,6 +129,7 @@ function startGame(toriiClient)
 
 	if Screen.Width < Screen.Height then
 		local controlsFrame = ui:createFrame()
+		local size = 100
 		local leftBtn = ui:createButton("⬅️")
 		leftBtn.parentDidResize = function()
 			leftBtn.pos = { 0, 0 }
@@ -139,7 +140,7 @@ function startGame(toriiClient)
 		end
 		local rightBtn = ui:createButton("➡️")
 		rightBtn.parentDidResize = function()
-			rightBtn.pos = { 100, 0 }
+			rightBtn.pos = { size * 2, 0 }
 		end
 		rightBtn:setParent(controlsFrame)
 		rightBtn.onRelease = function()
@@ -147,7 +148,7 @@ function startGame(toriiClient)
 		end
 		local downBtn = ui:createButton("⬇️")
 		downBtn.parentDidResize = function()
-			downBtn.pos = { 50, 0 }
+			downBtn.pos = { size, 0 }
 		end
 		downBtn:setParent(controlsFrame)
 		leftBtn.onRelease = function()
@@ -155,20 +156,20 @@ function startGame(toriiClient)
 		end
 		local upBtn = ui:createButton("⬆️")
 		upBtn.parentDidResize = function()
-			upBtn.pos = { 50, 50 }
+			upBtn.pos = { size, size }
 		end
 		upBtn:setParent(controlsFrame)
 		upBtn.onRelease = function()
 			dojo.actions.move(Direction.Up)
 		end
 
-		leftBtn.Size = 50
-		rightBtn.Size = 50
-		downBtn.Size = 50
-		upBtn.Size = 50
+		leftBtn.Size = size
+		rightBtn.Size = size
+		downBtn.Size = size
+		upBtn.Size = size
 
 		controlsFrame.parentDidResize = function()
-			controlsFrame.pos = { Screen.Width - 150 - 10, 10 }
+			controlsFrame.pos = { Screen.Width - size * 3 - 10, 10 }
 		end
 		controlsFrame:parentDidResize()
 	end
