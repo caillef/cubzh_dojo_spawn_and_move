@@ -155,11 +155,11 @@ function startGame(toriiClient)
 		end
 		local upBtn = ui:createButton("⬆️")
 		upBtn.parentDidResize = function()
-			upBtn.pos = { 0, 50 }
+			upBtn.pos = { 50, 50 }
 		end
 		upBtn:setParent(controlsFrame)
 		upBtn.onRelease = function()
-			dojo.actions.move(Direction.Left)
+			dojo.actions.move(Direction.Up)
 		end
 
 		leftBtn.Size = 50
