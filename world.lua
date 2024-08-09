@@ -172,6 +172,20 @@ function startGame(toriiClient)
 			controlsFrame.pos = { Screen.Width - size * 3 - 10, 10 }
 		end
 		controlsFrame:parentDidResize()
+
+		local nameInput = ui:createTextInput("focg lover", "", "default")
+		nameInput.parentDidResize = function()
+			nameInput.pos = { 10, 10 }
+		end
+		nameInput.onFocus = function()
+			nameInput.Text = ""
+		end
+		nameInput.onFocusLost = function()
+			dojo.actions.set_player_config(nameInput.Text)
+		end
+		nameInput.onSubmit = function()
+			dojo.actions.set_player_config(nameInput.Text)
+		end
 	end
 end
 
