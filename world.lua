@@ -231,15 +231,6 @@ function bytes_to_hex(data)
 	return hex
 end
 
-function string_to_bytearraystr(str)
-	local hex = "0x"
-	for i=1, #str do
-		local numberValue = string.byte(str,i)
-        	hex = hex .. string.format("%02x", numberValue)
-	end
-	return hex
-end
-
 function number_to_hexstr(number)
 	return "0x"..string.format("%x", number)
 end
@@ -257,7 +248,7 @@ dojo.actions = {
 	end,
 	set_player_config = function(name)
 		if not dojo.toriiClient then return end
-		dojo.toriiClient:Execute(dojo.burnerAccount, dojo.config.actions, "set_player_config", string.format("[\"%s\"]", string_to_bytearraystr(name)))
+		dojo.toriiClient:Execute(dojo.burnerAccount, dojo.config.actions, "set_player_config", string.format("[\"%s\"]", Dojo:serializeBytearray(name)))
 	end
 }
 
