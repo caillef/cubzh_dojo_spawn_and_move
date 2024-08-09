@@ -248,7 +248,7 @@ dojo.actions = {
 	end,
 	set_player_config = function(name)
 		if not dojo.toriiClient then return end
-		dojo.toriiClient:Execute(dojo.burnerAccount, dojo.config.actions, "set_player_config", string.format("[\"%s\"]", Dojo:serializeBytearray(name)))
+		dojo.toriiClient:Execute(dojo.burnerAccount, dojo.config.actions, "set_player_config", string.format("[\"%s\"]", Dojo:SerializeBytearray(name)))
 	end
 }
 
