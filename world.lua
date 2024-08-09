@@ -108,7 +108,7 @@ getOrCreatePlayerEntity = function(key, data)
 		if playerConfig then
 			print(">> 4 a")
 
-			local name = Dojo:DeserializeBytearray(playerConfig.name.value)
+			local name = playerConfig.name.value
 			avatar.nameHandle.Text = name
 			local isLocalPlayer = myAddress == playerConfig.player.value
 			if isLocalPlayer then
