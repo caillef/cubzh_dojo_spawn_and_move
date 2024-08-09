@@ -113,7 +113,7 @@ end
 
 function startGame(toriiClient)
 	-- sync existing entities
-	toriiClient:Entities(function(entities)	
+	toriiClient:Entities("{ \"limit\": 100, \"offset\": 0 }", function(entities)	
 		for key,newEntity in pairs(entities) do
 			local entity = getOrCreatePlayerEntity(key, newEntity)
 			if entity then entity:update(newEntity) end
@@ -193,7 +193,6 @@ dojo = {}
 
 dojo.getOrCreateBurner = function(self, config, cb)
 	self.toriiClient:CreateBurner(config.playerAddress, config.playerSigningKey, function(success, burnerAccount)
-		print("success burner account", success)
 		dojo.burnerAccount = burnerAccount
 		cb()
 	end)
