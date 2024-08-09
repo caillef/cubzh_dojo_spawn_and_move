@@ -54,7 +54,8 @@ getOrCreatePlayerEntity = function(key, data)
 
 		local handle = Text()
 		handle:SetParent(avatar)
-		handle.FontSize = 10
+		handle.FontSize = 1
+		handle.Color = Color.White
 		handle.LocalPosition = { 0, 4, 0 }
 		avatar.nameHandle = handle
 		handle.Backward = Camera.Backward
