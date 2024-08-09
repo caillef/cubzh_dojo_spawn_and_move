@@ -151,7 +151,7 @@ function startGame(toriiClient)
 			downBtn.pos = { size, 0 }
 		end
 		downBtn:setParent(controlsFrame)
-		leftBtn.onRelease = function()
+		downBtn.onRelease = function()
 			dojo.actions.move(Direction.Down)
 		end
 		local upBtn = ui:createButton("⬆️")
