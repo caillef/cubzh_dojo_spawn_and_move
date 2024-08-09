@@ -70,10 +70,14 @@ getOrCreatePlayerEntity = function(key, data)
 
 	myAddress = dojo.burnerAccount.Address
 	entity.update = function(self, newEntity)
+		print(">> 1")
 		local avatar = self.avatar
 
 		local moves = dojo:getModel(newEntity, "dojo_examples-Moves")
+		print(">> 2")
 		if moves then
+			print(">> 2 a")
+
 			if moves.last_direction.value.option == "Left" then avatar.Rotation.Y = math.pi * -0.5 end
 			if moves.last_direction.value.option == "Right" then avatar.Rotation.Y = math.pi * 0.5 end
 			if moves.last_direction.value.option == "Up" then avatar.Rotation.Y = 0 end
@@ -85,8 +89,12 @@ getOrCreatePlayerEntity = function(key, data)
 			end
 		end
 
+		print(">> 3")
+
 		local position = dojo:getModel(newEntity, "dojo_examples-Position")
 		if position then
+			print(">> 3 a")
+
 			avatar.Position = {
 				((position.vec.value.x.value - self.originalPos.x) + 0.5) * map.Scale.X,
 				0,
@@ -94,8 +102,12 @@ getOrCreatePlayerEntity = function(key, data)
 			}
 		end
 
+		print(">> 4")
+
 		local playerConfig = dojo:getModel(newEntity, "dojo_examples-PlayerConfig")
 		if playerConfig then
+			print(">> 4 a")
+
 			local name = dojo::Dojo::DeserializeBytearray(playerConfig.name.value)
 			avatar.nameHandle.Text = name
 			local isLocalPlayer = myAddress == playerConfig.player.value
@@ -104,6 +116,8 @@ getOrCreatePlayerEntity = function(key, data)
 				avatar.nameHandle.Color = Color.White
 			end
 		end
+		print(">> 5")
+
 		avatar.nameHandle.Backward = Camera.Backward
 
 		self.data = newEntity
