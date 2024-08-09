@@ -125,6 +125,7 @@ function startGame(toriiClient)
 	-- match everything
 	local clauseJsonStr = "[{ \"Keys\": { \"keys\": [], \"models\": [], \"pattern_matching\": \"VariableLen\" } }]"
 	toriiClient:OnEntityUpdate(clauseJsonStr, function(entities)
+		print("entity update received")
 		for key,newEntity in pairs(entities) do
 			local entity = getOrCreatePlayerEntity(key, newEntity)
 			if entity then entity:update(newEntity) end
