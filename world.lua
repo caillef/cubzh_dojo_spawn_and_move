@@ -96,7 +96,8 @@ getOrCreatePlayerEntity = function(key, data)
 
 		local playerConfig = dojo:getModel(newEntity, "dojo_examples-PlayerConfig")
 		if playerConfig then
-			avatar.nameHandle.Text = playerConfig.name.value:ToString()
+			local name = dojo::Dojo::DeserializeBytearray(playerConfig.name.value)
+			avatar.nameHandle.Text = name
 			local isLocalPlayer = myAddress == playerConfig.player.value
 			if isLocalPlayer then
 				avatar.nameHandle.BackgroundColor = Color.Red
@@ -133,8 +134,8 @@ function startGame(toriiClient)
 
 	-- call spawn method
 	dojo.actions.spawn()
-	Timer(1, function()
-		--dojo.actions.set_player_config("focg lover")
+	Timer(3, function()
+		dojo.actions.set_player_config("focg lover")
 	end)
 
 	-- init ui
@@ -147,7 +148,6 @@ function startGame(toriiClient)
 end
 
 Client.OnStart = function()
-	print("LUAAAA ENVIRONMENT", Environment.USER_AUTH)
 	map = MutableShape()
 	for z=-10,10 do
 		for x=-10,10 do
