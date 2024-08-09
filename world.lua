@@ -126,6 +126,17 @@ function startGame(toriiClient)
 		remainingMoves.pos = { Screen.Width - remainingMoves.Width - 5, Screen.Height - remainingMoves.Height - Screen.SafeArea.Top }
 	end
 	remainingMoves:parentDidResize()
+
+	if Screen.Width < Screen.Height then
+		local leftBtn = ui:createButton("<")
+		leftBtn.parentDidResize = function()
+			leftBtn.pos = { 10, 10 }
+		end
+		leftBtn.onRelease = function()
+			print("Click!")
+			dojo.actions.move(Direction.Right)
+		end
+	end
 end
 
 Client.OnStart = function()
