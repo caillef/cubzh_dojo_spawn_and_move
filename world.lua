@@ -68,6 +68,7 @@ getOrCreatePlayerEntity = function(key, data)
 
 		local position = dojo:getModel(newEntity, "dojo_examples-Position")
 		if position then
+			print(JSON:Encode(position))
 			avatar.Position = {
 				((position.vec.value.x.value - self.originalPos.x) + 0.5) * map.Scale.X,
 				0,
