@@ -1,8 +1,8 @@
 local worldInfo = {
 	rpc_url = "https://api.cartridge.gg/x/spawn-and-move-cubzh/katana",
 	torii_url = "https://api.cartridge.gg/x/spawn-and-move-cubzh/torii",
-	world = "0x25e74888e786245ec7aa93d846b2cc9e4b49a5244209860bbf4b384f654521b",
-	actions = "0x24d926d75cd84104c3bd24f0f79e95c273d6a99ed449f3c8b83114857020332",
+	world = "0x262ad9ca16bf49faeee6a8de8a66946607e3a789f11a31abefb8e796d63a435",
+	actions = "0x040b6994c76da51db0c1dee2413641955fb3b15add8a35a2c605b1a050d225ab",
 	playerAddress = "0x657e5f424dc6dee0c5a305361ea21e93781fea133d83efa410b771b7f92b",
 	playerSigningKey = "0xcd93de85d43988b9492bfaaff930c129fc3edbc513bb0c2b81577291848007",
 }
